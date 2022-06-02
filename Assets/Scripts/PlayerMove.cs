@@ -27,7 +27,7 @@ public class PlayerMove : MonoBehaviour
     {
         Vector2 input = new Vector2(Input.GetAxis(HorizontalAxis), Input.GetAxis(VerticalAxis));
 
-        Vector3 moveDirection = new Vector3(input.x, 0, input.y) * _speed;
+        Vector3 moveDirection = (input.x * transform.right + input.y * transform.forward) * _speed;
         moveDirection.y = _myPhysic.velocity.y;
         _myPhysic.velocity = moveDirection;
     }
