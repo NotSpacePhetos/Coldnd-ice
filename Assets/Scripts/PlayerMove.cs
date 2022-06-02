@@ -15,6 +15,10 @@ public class PlayerMove : MonoBehaviour
     private void Awake()
     {
         _myPhysic = GetComponent<Rigidbody>();
+    }
+
+    private void Start()
+    {
         _myPhysic.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 
