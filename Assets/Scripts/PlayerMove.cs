@@ -19,7 +19,7 @@ public class PlayerMove : MonoBehaviour
 
     private void Start()
     {
-        _myPhysic.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        _myPhysic.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
     private void Update()

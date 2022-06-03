@@ -176,7 +176,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _myHead: {fileID: 4450540724061297255}
   _sensevity: 30
-  _rotateSmooth: 5
+  _rotationSmooth: 30
+  _minVerticalRotation: -80
+  _maxVerticalRotation: 80
 --- !u!1 &3409505887822105377
 GameObject:
   m_ObjectHideFlags: 0

@@ -39,6 +39,6 @@ public class PlayerViewer : MonoBehaviour
 
         _myHead.localRotation = Quaternion.Slerp(_myHead.localRotation, Quaternion.AngleAxis(_verticalRotation, Vector3.right), _rotationSmooth * Time.deltaTime);
 
-        transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.AngleAxis(_horizontalRotation, Vector3.up), _rotationSmooth * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.AngleAxis(_horizontalRotation, Vector3.up), _rotationSmooth * Time.deltaTime);
     }
 }
