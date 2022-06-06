@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Coldnd_ice.unity
     guid: 3a1a66b5e44290d448c971b0ab0dbf37
+  - enabled: 1
+    path: Assets/GrassFlowers/Demo/DemoGrassFlowers.unity
+    guid: 679e28dd92e786342b7944447228f70c
+  - enabled: 1
+    path: Assets/Conifers [BOTD]/Render Pipeline Support/Built-in RP/Demo/Conifers_Cast.unity
+    guid: d4bb49bc64ef5524b805c9251450b38e
   m_configObjects: {}
