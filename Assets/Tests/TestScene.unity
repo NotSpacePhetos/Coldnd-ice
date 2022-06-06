@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 111221051}
   - component: {fileID: 111221050}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ChangeOptionPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 297278036}
   - component: {fileID: 297278035}
   m_Layer: 5
-  m_Name: PauseMenuPanel
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1297,8 +1297,8 @@ MonoBehaviour:
   _pauseMenuPlanel: {fileID: 297278033}
   _optionsPlanel: {fileID: 0}
   _continueButton: {fileID: 662554835}
-  _optionsButton: {fileID: 0}
-  _exitButton: {fileID: 0}
+  _optionsButton: {fileID: 1624375800}
+  _exitButton: {fileID: 834735150}
 --- !u!1 &1719701912
 GameObject:
   m_ObjectHideFlags: 0
