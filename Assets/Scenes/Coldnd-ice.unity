@@ -312,15 +312,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5409299562634958055, guid: daa3f8d53700e0d4a9e6f689b7971c96, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.0391369
+      value: -874.8
       objectReference: {fileID: 0}
     - target: {fileID: 5409299562634958055, guid: daa3f8d53700e0d4a9e6f689b7971c96, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.3
+      value: 60.96
       objectReference: {fileID: 0}
     - target: {fileID: 5409299562634958055, guid: daa3f8d53700e0d4a9e6f689b7971c96, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.0920181
+      value: 363.3
       objectReference: {fileID: 0}
     - target: {fileID: 5409299562634958055, guid: daa3f8d53700e0d4a9e6f689b7971c96, type: 3}
       propertyPath: m_LocalRotation.w
@@ -350,6 +350,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6018072566993399007, guid: daa3f8d53700e0d4a9e6f689b7971c96, type: 3}
+      propertyPath: _sensevity
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daa3f8d53700e0d4a9e6f689b7971c96, type: 3}
 --- !u!1 &1753945112
@@ -364,7 +368,7 @@ GameObject:
   - component: {fileID: 1753945114}
   - component: {fileID: 1753945113}
   m_Layer: 0
-  m_Name: TestTerrain
+  m_Name: TestTerrain(good)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -423,7 +427,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1753945112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1361, y: 0, z: 0}
+  m_LocalPosition: {x: -1361, y: -14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
