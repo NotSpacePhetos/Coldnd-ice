@@ -169,11 +169,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerPrefab: {fileID: 5633109237645791709, guid: daa3f8d53700e0d4a9e6f689b7971c96, type: 3}
   _inventory: {fileID: 1667866256}
---- !u!1 &258330940 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 258330940, guid: 41733b0149086614dbae6e994f61deed, type: 3}
-  m_PrefabInstance: {fileID: 6248035843414669467}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &310897109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -790,10 +785,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 258330940, guid: 41733b0149086614dbae6e994f61deed, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6248035841789797905, guid: 41733b0149086614dbae6e994f61deed, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -886,9 +877,5 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2020340932}
-    - target: {fileID: 9148648742900833770, guid: 41733b0149086614dbae6e994f61deed, type: 3}
-      propertyPath: _inventoryPanel
-      value: 
-      objectReference: {fileID: 258330940}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41733b0149086614dbae6e994f61deed, type: 3}
