@@ -7,11 +7,13 @@ namespace TestScripts
 
     public class PlayerSpawn : MonoBehaviour
     {
-        [SerializeField] private GameObject _playerPrefab;
+        [SerializeField] private PlayerPickuper _playerPrefab;
+        [SerializeField] private InventoryClaimer _inventory;
 
         private void Start()
         {
-            Instantiate(_playerPrefab, transform.position, Quaternion.identity);
+            PlayerPickuper player = Instantiate(_playerPrefab, transform.position, Quaternion.identity);
+            player.inventory = _inventory;
         }
     }
 

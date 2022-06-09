@@ -36,9 +36,9 @@ public class ReadmeEditor : Editor {
 	
 	static void LoadLayout()
 	{
-		var assembly = typeof(EditorApplication).Assembly; 
-		var windowLayoutType = assembly.GetType("UnityEditor.WindowLayout", true);
-		var method = windowLayoutType.GetMethod("LoadWindowLayout", BindingFlags.Public | BindingFlags.Static);
+		Assembly assembly = typeof(EditorApplication).Assembly; 
+		Type windowLayoutType = assembly.GetType("UnityEditor.WindowLayout", true);
+		MethodInfo method = windowLayoutType.GetMethod("LoadWindowLayout", BindingFlags.Public | BindingFlags.Static);
 		method.Invoke(null, new object[]{Path.Combine(Application.dataPath, "IgniteCoders/Simple Water Shader/Info/Layout.wlt"), false});
 	}
 	

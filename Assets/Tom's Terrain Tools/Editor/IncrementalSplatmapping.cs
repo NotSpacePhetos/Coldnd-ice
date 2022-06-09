@@ -152,7 +152,7 @@ public class IncrementalSplatmapping : EditorWindow {
 		{
 			textureImporter.mipmapEnabled = false;
 			textureImporter.isReadable = true;
-			textureImporter.textureFormat = TextureImporterFormat.RGB24;
+			//textureImporter.textureFormat = TextureImporterFormat.RGB24;
 			AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
 			Debug.Log("fixed texture format for "+path);
 		}
@@ -293,16 +293,16 @@ public class IncrementalSplatmapping : EditorWindow {
 
 	void AddTexture(Texture2D Texture, int TileSize) 
 	{
-		SplatPrototype[] oldPrototypes = MyTerrain.terrainData.splatPrototypes;
-		SplatPrototype[] newPrototypes = new SplatPrototype[oldPrototypes.Length + 1];
+        TerrainLayer[] oldPrototypes = MyTerrain.terrainData.terrainLayers;
+        TerrainLayer[] newPrototypes = new TerrainLayer[oldPrototypes.Length + 1];
 		for (int x=0;x<oldPrototypes.Length;x++) {
 			newPrototypes[x] = oldPrototypes[x];
 		}
-		newPrototypes[oldPrototypes.Length] = new SplatPrototype();
-		newPrototypes[oldPrototypes.Length].texture = Texture;
+		newPrototypes[oldPrototypes.Length] = new TerrainLayer();
+		newPrototypes[oldPrototypes.Length].diffuseTexture = Texture;
 		Vector2 vector = new Vector2(TileSize, TileSize);
 		newPrototypes[oldPrototypes.Length].tileSize = vector;
-		MyTerrain.terrainData.splatPrototypes = newPrototypes;
+		MyTerrain.terrainData.terrainLayers = newPrototypes;
 	}
 
 }

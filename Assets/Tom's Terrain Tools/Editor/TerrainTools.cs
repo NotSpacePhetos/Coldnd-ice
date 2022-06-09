@@ -663,19 +663,19 @@ namespace TTT
 		}
 
 
-		SplatPrototype[] SetupTextures() 
+        TerrainLayer[] SetupTextures() 
 		{
 			SetupTextureNormals();
 
-			//Vector2 tilesize = new Vector2(40f, 40f);
+            //Vector2 tilesize = new Vector2(40f, 40f);
 
-			SplatPrototype[] Splat = new SplatPrototype[4];
+            TerrainLayer[] Splat = new TerrainLayer[4];
 
 			for (int i = 0; i < 4; i++) 
 			{
-				Splat[i] = new SplatPrototype();
-				Splat[i].texture = splatTextures[i];
-				if (assignNormalMapsIfFounded) Splat[i].normalMap = splatTexNormals[i];
+				Splat[i] = new TerrainLayer();
+				Splat[i].diffuseTexture = splatTextures[i];
+				if (assignNormalMapsIfFounded) Splat[i].normalMapTexture = splatTexNormals[i];
 				Splat[i].tileSize = new Vector2(tileSizeX,tileSizeY);
 			}
 
@@ -845,7 +845,7 @@ namespace TTT
 		{
 			if (!myTerrain) myTerrain = Terrain.activeTerrain;
 			if (myTerrain==null) {Debug.LogError("No terrain selected"); return;}
-			myTerrain.terrainData.splatPrototypes = SetupTextures();
+			myTerrain.terrainData.terrainLayers = SetupTextures();
 		}
 
 
@@ -1522,18 +1522,18 @@ namespace TTT
 		{
 			if (!myTerrain) myTerrain = Terrain.activeTerrain;
 
-			SplatPrototype[] oldPrototypes = myTerrain.terrainData.splatPrototypes;
-			SplatPrototype[] newPrototypes = new SplatPrototype[oldPrototypes.Length + 1];
+			TerrainLayer[] oldPrototypes = myTerrain.terrainData.terrainLayers;
+            TerrainLayer[] newPrototypes = new TerrainLayer[oldPrototypes.Length + 1];
 
 			for (int x=0;x<oldPrototypes.Length;x++) 
 			{
 				newPrototypes[x] = oldPrototypes[x];
 			}
-			newPrototypes[oldPrototypes.Length] = new SplatPrototype();
-			newPrototypes[oldPrototypes.Length].texture = overlayTexture;
+			newPrototypes[oldPrototypes.Length] = new TerrainLayer();
+			newPrototypes[oldPrototypes.Length].diffuseTexture = overlayTexture;
 			Vector2 vector = new Vector2(tileSize, tileSize);
 			newPrototypes[oldPrototypes.Length].tileSize = vector;
-			myTerrain.terrainData.splatPrototypes = newPrototypes;
+			myTerrain.terrainData.terrainLayers = newPrototypes;
 			EditorUtility.SetDirty(myTerrain);
 		}
 
