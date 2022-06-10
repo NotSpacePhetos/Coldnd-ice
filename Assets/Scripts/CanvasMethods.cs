@@ -12,8 +12,6 @@ public class CanvasMethods : MonoBehaviour
     [SerializeField] private Button _optionsButton;
     [SerializeField] private Button _exitButton;
 
-    private bool _isPause = false;
-
     private void Start()
     {
         ButtonsOnClickInit();
