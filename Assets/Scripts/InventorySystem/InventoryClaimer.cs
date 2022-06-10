@@ -3,24 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventoryClaimer : MonoBehaviour
+public class InventoryClaimer: MonoBehaviour
 {
     [SerializeField] private float _defaultScaleObjectInCanvas;
     [SerializeField] private GridLayoutGroup _inventoryGrid;
     [SerializeField] private GameObject _itemBoxPrefab;
     [SerializeField] private int _UILayer;
-    [SerializeField] private GameObject _inventoryPanel;
-    [SerializeField] private KeyCode _openInventoryKey = KeyCode.Tab;
 
     public List<PickupData> _pickups;
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(_openInventoryKey))
-        {
-            _inventoryPanel.SetActive(Time.timeScale == 1 && !_inventoryPanel.activeSelf);
-        }
-    }
 
     public void AddItem(PickupData item)
     {
@@ -37,7 +27,7 @@ public class InventoryClaimer : MonoBehaviour
             {
                 addAmount = item.amount - (item.amount - neededCurrentItemAmountToStack);
             }
-            
+
             currentFreeItem.amount += addAmount;
             item.amount -= addAmount;
         }
@@ -68,7 +58,7 @@ public class InventoryClaimer : MonoBehaviour
 
     private void SetLayerDefaultInChilds(Transform parent)
     {
-        foreach(Transform child in parent.GetComponentsInChildren<Transform>())
+        foreach (Transform child in parent.GetComponentsInChildren<Transform>())
         {
             child.gameObject.layer = _UILayer;
         }

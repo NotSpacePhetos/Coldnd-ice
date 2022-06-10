@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerPrefab: {fileID: 5633109237645791709, guid: daa3f8d53700e0d4a9e6f689b7971c96, type: 3}
-  _inventory: {fileID: 1667866256}
+  _inventory: {fileID: 6248035843414669468}
 --- !u!1001 &310897109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -768,17 +768,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9dc382b2f7878544a8dd3eddf196088, type: 3}
---- !u!114 &1667866256 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9148648742900833770, guid: 41733b0149086614dbae6e994f61deed, type: 3}
-  m_PrefabInstance: {fileID: 6248035843414669467}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdbca34955330f941b872cc71bd2c71e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1797325330
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,7 +821,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8115832416795702335, guid: a9dc382b2f7878544a8dd3eddf196088, type: 3}
       propertyPath: m_Name
-      value: Branch (3)
+      value: Branch
       objectReference: {fileID: 0}
     - target: {fileID: 8814895682996789666, guid: a9dc382b2f7878544a8dd3eddf196088, type: 3}
       propertyPath: m_RootOrder
@@ -1245,3 +1234,14 @@ PrefabInstance:
       objectReference: {fileID: 2020340932}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41733b0149086614dbae6e994f61deed, type: 3}
+--- !u!114 &6248035843414669468 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3392116717863446441, guid: 41733b0149086614dbae6e994f61deed, type: 3}
+  m_PrefabInstance: {fileID: 6248035843414669467}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdbca34955330f941b872cc71bd2c71e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

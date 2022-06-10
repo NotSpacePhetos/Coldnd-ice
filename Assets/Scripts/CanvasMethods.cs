@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System;
 
 public class CanvasMethods : MonoBehaviour
 {
-    [SerializeField] private KeyCode _pauseKey = KeyCode.Escape;
     [SerializeField] private GameObject _pauseMenuPlanel;
     [SerializeField] private GameObject _optionsPlanel;
     [SerializeField] private Button _continueButton;
@@ -21,34 +20,16 @@ public class CanvasMethods : MonoBehaviour
         _pauseMenuPlanel.SetActive(false);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(_pauseKey))
-        {
-            SwitchPauseState();
-        }
-    }
-
     private void ButtonsOnClickInit()
     {
-        _continueButton.onClick.AddListener(SwitchPauseState);
+        _continueButton.onClick.AddListener(Continue);
         _optionsButton.onClick.AddListener(OpenOptions);
     }
 
-    private void SwitchPauseState()
+    private void Continue()
     {
-        _isPause = !_isPause;
-        _pauseMenuPlanel.SetActive(_isPause);
-        if (_isPause)
-        {
-            Time.timeScale = 0;
-            Cursor.lockState = CursorLockMode.None;
-        }
-        else
-        {
-            Time.timeScale = 1;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void OpenOptions()
@@ -56,5 +37,6 @@ public class CanvasMethods : MonoBehaviour
         _optionsPlanel.SetActive(true);
     }
 }
+
 
 
