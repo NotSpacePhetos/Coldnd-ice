@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventoryClaimer: MonoBehaviour
+public class Inventory: MonoBehaviour
 {
     [SerializeField] private float _defaultScaleObjectInCanvas;
     [SerializeField] private GridLayoutGroup _inventoryGrid;

@@ -17,7 +17,7 @@ public class WindowSwaper : MonoBehaviour
         {
             if (_inventoryPanel.activeSelf)
             {
-                _inventoryPanel.SetActive(false);
+                SetInventoryPanelActiveState(false);
             }
             else
             {
@@ -37,11 +37,25 @@ public class WindowSwaper : MonoBehaviour
 
         if (Input.GetKeyDown(_inventoryKey))
         {
-            _inventoryPanel.SetActive(Time.timeScale == 1 && !_inventoryPanel.activeSelf);
-            _crosshair.SetActive(Time.timeScale == 1 && !_inventoryPanel.activeSelf);
+            SetInventoryPanelActiveState(Time.timeScale == 1 && !_inventoryPanel.activeSelf);
         }
 
 
+    }
+
+    private void SetInventoryPanelActiveState(bool state)
+    {
+        _inventoryPanel.SetActive(state);
+        if (state)
+        {
+            _crosshair.SetActive(false);
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            _crosshair.SetActive(true);
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
     private void StopGame()

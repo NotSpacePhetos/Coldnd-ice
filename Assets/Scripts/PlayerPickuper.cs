@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerPickuper : MonoBehaviour
 {
-    public InventoryClaimer inventory;
+    public Inventory inventory;
     [SerializeField] private Transform _camera;
     [SerializeField] private float _pickupDistance = 1f;
     [SerializeField] private KeyCode _pickupKey = KeyCode.E;

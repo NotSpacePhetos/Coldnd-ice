@@ -8,7 +8,7 @@ namespace TestScripts
     public class PlayerSpawn : MonoBehaviour
     {
         [SerializeField] private PlayerPickuper _playerPrefab;
-        [SerializeField] private InventoryClaimer _inventory;
+        [SerializeField] private Inventory _inventory;
 
         private void Start()
         {
