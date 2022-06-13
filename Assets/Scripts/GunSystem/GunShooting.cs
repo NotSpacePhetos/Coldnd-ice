@@ -6,13 +6,17 @@ using UnityEngine;
 public class GunShooting : MonoBehaviour
 {
     [SerializeField] private KeyCode _shootKey = KeyCode.Mouse0;
-    [SerializeField] private Transform _camera;
 
-    public GunData currentGun;
+    private GunData _gunSettings;
+
+    private void Awake()
+    {
+        _gunSettings = GetComponent<GunData>();
+    }
 
     private void Update()
     {
-        if (currentGun!= null && Input.GetKeyDown(_shootKey))
+        if (Input.GetKeyDown(_shootKey))
         {
             Shoot();
         }
@@ -20,6 +24,6 @@ public class GunShooting : MonoBehaviour
 
     private void Shoot()
     {
-
+        
     }
 }

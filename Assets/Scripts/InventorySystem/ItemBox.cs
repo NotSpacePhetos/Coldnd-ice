@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ItemeBoxRenamer : MonoBehaviour
+public class ItemBox : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _namePickupLabel;
 
