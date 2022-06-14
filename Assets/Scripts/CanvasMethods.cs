@@ -26,6 +26,7 @@ public class CanvasMethods : MonoBehaviour
 
     private void Continue()
     {
+        _pauseMenuPlanel.SetActive(false);
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
     }

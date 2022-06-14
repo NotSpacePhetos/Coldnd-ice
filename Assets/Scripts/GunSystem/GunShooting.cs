@@ -8,6 +8,7 @@ public class GunShooting : MonoBehaviour
     [SerializeField] private KeyCode _shootKey = KeyCode.Mouse0;
 
     private GunData _gunSettings;
+    private bool _canShoot = true;
 
     private void Awake()
     {
@@ -18,12 +19,31 @@ public class GunShooting : MonoBehaviour
     {
         if (Input.GetKeyDown(_shootKey))
         {
-            Shoot();
+            TryShoot();
         }
     }
 
-    private void Shoot()
+    private void TryShoot()
     {
-        
+        Transform viewer = Camera.main.transform;
+        if (_canShoot && Physics.Raycast(viewer.position, viewer.forward, out RaycastHit hit, _gunSettings.range))
+        {
+            if (hit.collider.gameObject.TryGetComponent(out Transform anyObject))
+            {
+                //print(hit.collider.name);
+            }
+        }
+    }
+
+    private void Recovery()
+    {
+        StartCoroutine(Recovering());
+    }
+
+    private IEnumerator Recovering()
+    {
+        _canShoot = false;
+        yield return new WaitForSeconds(_gunSettings.fireRate);
+        _canShoot = true;
     }
 }

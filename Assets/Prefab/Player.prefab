@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 6018072566993399007}
   - component: {fileID: 6244588329453040310}
   - component: {fileID: 5633109237645791709}
+  - component: {fileID: 7486737022301420637}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -203,6 +204,7 @@ MonoBehaviour:
   _jumpKey: 32
   _groundChecker: {fileID: 4475506362098548670}
   _distanceToGround: 0.1
+  _defaultFallSpeed: 2
 --- !u!114 &5891712345444447796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,6 +271,20 @@ MonoBehaviour:
   _itemsLayer:
     serializedVersion: 2
     m_Bits: 8
+--- !u!136 &7486737022301420637
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821522792332735031}
+  m_Material: {fileID: 13400000, guid: 48401942d625dad45b14e14736eb2661, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2554883176774078618
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,7 +392,6 @@ GameObject:
   - component: {fileID: 1919317586103765772}
   - component: {fileID: 5255896164099643506}
   - component: {fileID: 5879450791601948684}
-  - component: {fileID: 7954114238253488567}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -449,20 +464,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7954114238253488567
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5826900254629034528}
-  m_Material: {fileID: 13400000, guid: 48401942d625dad45b14e14736eb2661, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7569198785626395056
 GameObject:
   m_ObjectHideFlags: 0

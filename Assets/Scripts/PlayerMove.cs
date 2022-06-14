@@ -12,6 +12,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private KeyCode _jumpKey = KeyCode.Space;
     [SerializeField] private Transform _groundChecker;
     [SerializeField] private float _distanceToGround;
+    [SerializeField] private float _defaultFallSpeed = 2;
 
     private bool _canJump = true;
     private bool _falled = false;
@@ -53,7 +54,10 @@ public class PlayerMove : MonoBehaviour
                 _falled = true;
                 StartCoroutine(JumpReload());
             }
-            _velocity.y = 0;
+            if (_canJump)
+            {
+                _velocity.y = -_defaultFallSpeed;
+            }
             if (Input.GetKeyDown(_jumpKey))
             {
                 TryJump();
