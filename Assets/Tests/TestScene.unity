@@ -699,6 +699,7 @@ GameObject:
   - component: {fileID: 1178500928}
   - component: {fileID: 1178500927}
   - component: {fileID: 1178500929}
+  - component: {fileID: 1178500930}
   m_Layer: 0
   m_Name: TestCube
   m_TagString: Untagged
@@ -801,12 +802,15 @@ MonoBehaviour:
   _fieldAngel: 90
   _checkRate: 2
   _viewer: {fileID: 1178500926}
+  _speedDefault: 2
+  _speedRage: 5
+  _raportDistance: 3
+  _damage: 40
+  _attackRate: 2
   _movePoints:
   - {fileID: 1213612809}
   - {fileID: 1390935525}
   - {fileID: 1633232831}
-  _speedDefault: 2
-  _speedRage: 5
 --- !u!195 &1178500928
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -845,6 +849,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1178500930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178500921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c33959d68042fed408625c1a0926f333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _HP: 100
 --- !u!1 &1213612807
 GameObject:
   m_ObjectHideFlags: 0
