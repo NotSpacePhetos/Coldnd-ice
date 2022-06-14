@@ -6,13 +6,22 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private float _gravityScale = 9.81f;
-    [SerializeField] private float _movmentSpeed = 3;
-    [SerializeField] private float _jumpForce;
+    [SerializeField] private float _speed = 3;
+    [SerializeField] private float _sprintSpeedAdd = 2;
+    [SerializeField] private float _maxStamina = 100;
+    [SerializeField] private float _staminaLossPerSecond = 20;
+    [SerializeField] private float _staminaRegeneratePerSecond = 8;
+    [SerializeField] private float _timeBeforeStaminaRegenerate = 1;
+    [SerializeField] private float _jumpForce = 5;
     [SerializeField] private float _jumpColdown = 0.3f;
     [SerializeField] private KeyCode _jumpKey = KeyCode.Space;
+    [SerializeField] private KeyCode _sprintKey = KeyCode.LeftShift;
     [SerializeField] private Transform _groundChecker;
-    [SerializeField] private float _distanceToGround;
+    [SerializeField] private float _distanceToGround = 0.5f;
     [SerializeField] private float _defaultFallSpeed = 2;
+
+    private float _stamina;
+    private float _movmentSpeed;
 
     private bool _canJump = true;
     private bool _falled = false;
@@ -21,22 +30,20 @@ public class PlayerMove : MonoBehaviour
 
     private const string HorizontalAxis = "Horizontal";
     private const string VerticalAxis = "Vertical";
-    private Vector3 _input
-    {
-        get
-        {
-            float x = Input.GetAxis(HorizontalAxis);
-            float y = Input.GetAxis(VerticalAxis);
-
-            return new Vector2(x, y);
-        }
-    }
+    private Vector2 _input = Vector2.zero;
 
     private Vector3 _velocity;
+
+    private IEnumerator regenerator;
 
     private void Awake()
     {
         _myController = GetComponent<CharacterController>();
+    }
+
+    private void Start()
+    {
+        _movmentSpeed = _speed;
     }
 
     private void FixedUpdate()
@@ -58,13 +65,48 @@ public class PlayerMove : MonoBehaviour
             {
                 _velocity.y = -_defaultFallSpeed;
             }
-            if (Input.GetKeyDown(_jumpKey))
+            
+        }
+
+        if (_stamina > 0 && Input.GetKey(_sprintKey))
+        {
+            _movmentSpeed = _speed + _sprintSpeedAdd;
+            _stamina -= _staminaLossPerSecond * Time.fixedDeltaTime;
+            if (_stamina <= 0)
             {
-                TryJump();
+                if (regenerator != null)
+                {
+                    StopCoroutine(regenerator);
+                }
+                regenerator = StaminaRegenerating();
+                StartCoroutine(regenerator);
             }
         }
-        
+
         Move();
+
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(_jumpKey))
+        {
+            TryJump();
+        }
+        if (Input.GetKeyUp(_sprintKey))
+        {
+            if (regenerator != null)
+            {
+                StopCoroutine(regenerator);
+            }
+            regenerator = StaminaRegenerating();
+            StartCoroutine(regenerator);
+        }
+
+        float x = Input.GetAxis(HorizontalAxis);
+        float y = Input.GetAxis(VerticalAxis);
+
+        _input = new Vector2(x, y);
     }
 
     private void Move()
@@ -87,6 +129,15 @@ public class PlayerMove : MonoBehaviour
             StartCoroutine(JumpReload());
         }
         
+    }
+
+    private IEnumerator StaminaRegenerating()
+    {
+        yield return new WaitForSeconds(_timeBeforeStaminaRegenerate);
+        while (_stamina < _maxStamina)
+        {
+            _stamina += _staminaRegeneratePerSecond * Time.fixedDeltaTime;
+        }
     }
 
     private IEnumerator JumpReload()
