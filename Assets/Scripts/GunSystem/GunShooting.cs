@@ -30,7 +30,7 @@ public class GunShooting : MonoBehaviour
         {
             if (hit.collider.gameObject.TryGetComponent(out Transform anyObject))
             {
-                //print(hit.collider.name);
+                print(hit.collider.name);
             }
         }
     }

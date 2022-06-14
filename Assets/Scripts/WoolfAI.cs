@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.AI;
+using System.Collections.Generic;
+using System;
 
 [RequireComponent(typeof(Rigidbody), typeof(NavMeshAgent))]
 public class WoolfAI : MonoBehaviour
@@ -10,17 +12,18 @@ public class WoolfAI : MonoBehaviour
     [SerializeField] private float _fieldAngel = 90;
     [SerializeField] private float _checkRate = 2;
     [SerializeField] private Transform _viewer;
-    [SerializeField] private Point[] _movePoints;
     [SerializeField] private float _speedDefault = 2;
     [SerializeField] private float _speedRage = 5;
+    [SerializeField] private float _raportDistance = 3;
+    [SerializeField] private Point[] _movePoints;
 
     private int _currentPoint;
     private Rigidbody _moveAgent;
     private NavMeshAgent _navMoveAgent;
-    private States _currentState = States.relax;
+    public States _currentState { get; private set; } = States.relax;
     private Transform _target = null;
 
-    private enum States
+    public enum States
     {
         relax = 0,
         rage = 1
@@ -58,7 +61,6 @@ public class WoolfAI : MonoBehaviour
                 _navMoveAgent.SetDestination(_target.position);
                 break;
         }
-        
     }
 
     private bool Check(out Transform target)
@@ -91,22 +93,36 @@ public class WoolfAI : MonoBehaviour
             yield return new WaitForSeconds(_checkRate);
             if (Check(out Transform player))
             {
-                _target = player;
-                GoIntoARage();
+                GoIntoARage(player);
             }
         }
     }
 
-    private void GoIntoARage()
+    
+
+    public void GoIntoARage(Transform target)
     {
         _currentState = States.rage;
         _navMoveAgent.speed = _speedRage;
+        _target = target;
+        foreach (RaycastHit obj in Physics.SphereCastAll(_viewer.position, _raportDistance, _viewer.up))
+        {
+            if (obj.collider.gameObject.TryGetComponent(out WoolfAI woolf) && woolf._currentState != States.rage)
+            {
+                woolf.GoIntoARage(target);
+            }
+        }
     }
 
     private void GoIntoARelax()
     {
         _currentState = States.relax;
         _navMoveAgent.speed = _speedDefault;
+        _target = null;
     }
 
+    public class PointPattern
+    {
+        public float stayTime = 1;
+    }
 }
