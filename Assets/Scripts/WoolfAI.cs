@@ -15,7 +15,11 @@ public class WoolfAI : MonoBehaviour
     [SerializeField] private float _speedDefault = 2;
     [SerializeField] private float _speedRage = 5;
     [SerializeField] private float _raportDistance = 3;
+    [SerializeField] private int _damage = 40;
+    [SerializeField] private float _attackRate = 2;
     [SerializeField] private Point[] _movePoints;
+
+    private bool _canTakeDamage = true;
 
     private int _currentPoint;
     private Rigidbody _moveAgent;
@@ -36,6 +40,22 @@ public class WoolfAI : MonoBehaviour
             _currentPoint++;
             _currentPoint %= _movePoints.Length;
         }
+        else if (other.TryGetComponent(out Player player) && _canTakeDamage)
+        {
+            player.Hit(_damage);
+        }
+    }
+
+    private void ReloadAttack()
+    {
+        StartCoroutine(ReloadingAttack());
+    }
+
+    private IEnumerator ReloadingAttack()
+    {
+        _canTakeDamage = false;
+        yield return new WaitForSeconds(_attackRate);
+        _canTakeDamage = true;
     }
 
     private void Awake()
@@ -98,8 +118,6 @@ public class WoolfAI : MonoBehaviour
         }
     }
 
-    
-
     public void GoIntoARage(Transform target)
     {
         _currentState = States.rage;
@@ -125,4 +143,6 @@ public class WoolfAI : MonoBehaviour
     {
         public float stayTime = 1;
     }
+
+
 }

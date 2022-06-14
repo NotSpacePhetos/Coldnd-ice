@@ -214,9 +214,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 821522792332735031}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 233eb3c0e9673c24e9100e6b04a72b68, type: 3}
+  m_Script: {fileID: 11500000, guid: bdf83f157c1db9645b4080842ce43a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _HP: 100
 --- !u!114 &6018072566993399007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -551,6 +552,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pistol
       objectReference: {fileID: 0}
+    - target: {fileID: 7881532236217611358, guid: b7d8e7c4b177a9c4ea3864f86b57dc52, type: 3}
+      propertyPath: owner
+      value: 
+      objectReference: {fileID: 5891712345444447796}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7d8e7c4b177a9c4ea3864f86b57dc52, type: 3}
 --- !u!4 &1905022347651083721 stripped

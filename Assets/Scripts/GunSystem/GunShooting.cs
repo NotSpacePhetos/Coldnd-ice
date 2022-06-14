@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(GunData))]
 public class GunShooting : MonoBehaviour
 {
+    public Player owner;
+
     [SerializeField] private KeyCode _shootKey = KeyCode.Mouse0;
 
     private GunData _gunSettings;
@@ -28,9 +30,10 @@ public class GunShooting : MonoBehaviour
         Transform viewer = Camera.main.transform;
         if (_canShoot && Physics.Raycast(viewer.position, viewer.forward, out RaycastHit hit, _gunSettings.range))
         {
-            if (hit.collider.gameObject.TryGetComponent(out Transform anyObject))
+            if (hit.collider.gameObject.TryGetComponent(out Player entity) && entity != owner)
             {
-                print(hit.collider.name);
+                entity.Hit(_gunSettings.damage);
+                Recovery();
             }
         }
     }

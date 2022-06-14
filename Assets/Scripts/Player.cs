@@ -1,6 +1,7 @@
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
-public class Player : MonoBehaviour
+public class Player : EntityBase
 {
     
 }
