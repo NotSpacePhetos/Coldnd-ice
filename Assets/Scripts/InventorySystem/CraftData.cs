@@ -1,10 +1,16 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CraftData : MonoBehaviour
 {
-    [SerializeField] public Dictionary<PickupData, int>[] needItemsAndAmount;
+    [Serializable] 
+    public struct ItemAndNeedAmount
+    {
+        public PickupData item;
+        public int amount;
+    }
 
+    public ItemAndNeedAmount[] craft;
     public int outAmount;
 }
