@@ -85,23 +85,28 @@ public class WoolfAI : MonoBehaviour
 
     private bool Check(out Transform target)
     {
-        Transform helpObject = Instantiate(new GameObject("helper"), _viewer.position, _viewer.rotation).transform;
+        GameObject helpObjectToRay = new GameObject("helper");
+
+        helpObjectToRay.transform.position = _viewer.position;
+        helpObjectToRay.transform.rotation = _viewer.rotation;
+
         for (int ray = 0; ray < _raysCount; ray++)
         {
             float currentAngle = _fieldAngel / 2 - _fieldAngel / (_raysCount - 1) * ray;
-            helpObject.rotation = _viewer.rotation;
-            helpObject.Rotate(_viewer.up, currentAngle);
-            Vector3 currentDirection = helpObject.forward;
+
+            helpObjectToRay.transform.rotation = _viewer.rotation;
+            helpObjectToRay.transform.Rotate(_viewer.up, currentAngle);
+            Vector3 currentDirection = helpObjectToRay.transform.forward;
             bool hited = Physics.Raycast(_viewer.position, currentDirection, out RaycastHit hit, _rangeDetect);
 
             if (hited && hit.collider.gameObject.TryGetComponent(out Player player))
             {
-                Destroy(helpObject.gameObject);
+                Destroy(helpObjectToRay.gameObject);
                 target = player.transform;
                 return true;
             }
         }
-        Destroy(helpObject.gameObject);
+        Destroy(helpObjectToRay.gameObject);
         target = null;
         return false;
     }

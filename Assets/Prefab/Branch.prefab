@@ -63,6 +63,8 @@ MonoBehaviour:
   nameItem: Branch
   stackSize: 3
   amount: 1
+  craft:
+  - {fileID: 0}
 --- !u!1001 &2077779774810770510
 PrefabInstance:
   m_ObjectHideFlags: 0

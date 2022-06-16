@@ -158,7 +158,6 @@ GameObject:
   - component: {fileID: 5891712345444447796}
   - component: {fileID: 6018072566993399007}
   - component: {fileID: 6244588329453040310}
-  - component: {fileID: 5633109237645791709}
   - component: {fileID: 7486737022301420637}
   m_Layer: 0
   m_Name: Player
@@ -198,10 +197,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gravityScale: 9.81
-  _movmentSpeed: 3
+  _speed: 3
+  _sprintSpeedAdd: 2
+  _maxStamina: 100
+  _staminaLossPerSecond: 20
+  _staminaRegeneratePerSecond: 8
   _jumpForce: 5
   _jumpColdown: 0.3
   _jumpKey: 32
+  _sprintKey: 304
   _groundChecker: {fileID: 4475506362098548670}
   _distanceToGround: 0.4
   _defaultFallSpeed: 2
@@ -235,6 +239,12 @@ MonoBehaviour:
   _rotationSmooth: 30
   _minVerticalRotation: -80
   _maxVerticalRotation: 80
+  inventory: {fileID: 0}
+  _interactiveObjectLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  _interactKey: 101
+  _interactDistance: 3
 --- !u!143 &6244588329453040310
 CharacterController:
   m_ObjectHideFlags: 0
@@ -253,25 +263,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &5633109237645791709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 821522792332735031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32e6e70d5090b2b4fb76ea074e1cb978, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
-  _camera: {fileID: 4450540724061297255}
-  _pickupDistance: 2
-  _pickupKey: 101
-  _itemsLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!136 &7486737022301420637
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -285,7 +276,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &2554883176774078618
 GameObject:
   m_ObjectHideFlags: 0

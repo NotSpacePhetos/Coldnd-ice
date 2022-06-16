@@ -11,7 +11,6 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float _maxStamina = 100;
     [SerializeField] private float _staminaLossPerSecond = 20;
     [SerializeField] private float _staminaRegeneratePerSecond = 8;
-    [SerializeField] private float _timeBeforeStaminaRegenerate = 1;
     [SerializeField] private float _jumpForce = 5;
     [SerializeField] private float _jumpColdown = 0.3f;
     [SerializeField] private KeyCode _jumpKey = KeyCode.Space;
@@ -43,6 +42,7 @@ public class PlayerMove : MonoBehaviour
 
     private void Start()
     {
+        _stamina = _maxStamina;
         _movmentSpeed = _speed;
     }
 
@@ -68,21 +68,6 @@ public class PlayerMove : MonoBehaviour
             
         }
 
-        if (_stamina > 0 && Input.GetKey(_sprintKey))
-        {
-            _movmentSpeed = _speed + _sprintSpeedAdd;
-            _stamina -= _staminaLossPerSecond * Time.fixedDeltaTime;
-            if (_stamina <= 0)
-            {
-                if (regenerator != null)
-                {
-                    StopCoroutine(regenerator);
-                }
-                regenerator = StaminaRegenerating();
-                StartCoroutine(regenerator);
-            }
-        }
-
         Move();
 
     }
@@ -93,20 +78,45 @@ public class PlayerMove : MonoBehaviour
         {
             TryJump();
         }
-        if (Input.GetKeyUp(_sprintKey))
+
+        if (Input.GetKey(_sprintKey) && _stamina > 0)
         {
-            if (regenerator != null)
-            {
-                StopCoroutine(regenerator);
-            }
-            regenerator = StaminaRegenerating();
-            StartCoroutine(regenerator);
+            Sprint();
         }
+
+        else if (Input.GetKeyUp(_sprintKey))
+        {
+            _movmentSpeed = _speed;
+            StartSprintReloading();
+        }
+
+        else
+        {
+            _movmentSpeed = _speed;
+        }
+
 
         float x = Input.GetAxis(HorizontalAxis);
         float y = Input.GetAxis(VerticalAxis);
 
         _input = new Vector2(x, y);
+    }
+
+    private void StartSprintReloading()
+    {
+        if (regenerator != null)
+        {
+            StopCoroutine(regenerator);
+        }
+
+        regenerator = StaminaRegenerating();
+        StartCoroutine(regenerator);
+    }
+
+    private void Sprint()
+    {
+        _movmentSpeed = _speed + _sprintSpeedAdd;
+        _stamina -= _staminaLossPerSecond * Time.deltaTime;
     }
 
     private void Move()
@@ -128,15 +138,14 @@ public class PlayerMove : MonoBehaviour
             _velocity.y = _jumpForce;
             StartCoroutine(JumpReload());
         }
-        
     }
 
     private IEnumerator StaminaRegenerating()
     {
-        yield return new WaitForSeconds(_timeBeforeStaminaRegenerate);
         while (_stamina < _maxStamina)
         {
             _stamina += _staminaRegeneratePerSecond * Time.fixedDeltaTime;
+            yield return null;
         }
     }
 
@@ -149,6 +158,6 @@ public class PlayerMove : MonoBehaviour
 
     private bool CheckGround()
     {
-        return Physics.Raycast(_groundChecker.position, -_groundChecker.up, _distanceToGround);
+        return Physics.SphereCast(_groundChecker.position, _distanceToGround, -_groundChecker.up, out RaycastHit hit);
     }
 }

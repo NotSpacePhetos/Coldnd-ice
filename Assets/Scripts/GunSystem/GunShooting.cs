@@ -30,7 +30,7 @@ public class GunShooting : MonoBehaviour
         Transform viewer = Camera.main.transform;
         if (_canShoot && Physics.Raycast(viewer.position, viewer.forward, out RaycastHit hit, _gunSettings.range))
         {
-            if (hit.collider.gameObject.TryGetComponent(out Player entity) && entity != owner)
+            if (hit.collider.gameObject.TryGetComponent(out EntityBase entity) && entity != owner)
             {
                 entity.Hit(_gunSettings.damage);
                 Recovery();

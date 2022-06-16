@@ -12,6 +12,11 @@ public class PlayerViewer : MonoBehaviour
     [SerializeField] private float _minVerticalRotation = -80;
     [SerializeField] private float _maxVerticalRotation = 80;
 
+    public Inventory inventory;
+    [SerializeField] private LayerMask _interactiveObjectLayer;
+    [SerializeField] private KeyCode _interactKey = KeyCode.E;
+    [SerializeField] private float _interactDistance = 3;
+
     private const string MouseAxisX = "Mouse X";
     private const string MouseAxisY = "Mouse Y";
 
@@ -26,6 +31,16 @@ public class PlayerViewer : MonoBehaviour
     private void Update()
     {
         RotateHeadAndBody();
+        if (Input.GetKeyDown(_interactKey))
+        {
+            if (Physics.Raycast(_myHead.position, _myHead.forward, out RaycastHit hit, _interactDistance, _interactiveObjectLayer))
+            {
+                if (hit.collider.gameObject.TryGetComponent(out InteractiveObject iObject))
+                {
+                    
+                }
+            }
+        }
     }
 
     private void RotateHeadAndBody()
